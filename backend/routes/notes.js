@@ -25,6 +25,8 @@ router.get('/fetchnote', fetchuser , async(req, res) =>{
 
 
 // Add a new note using post - api/Note/addnote - " Login required"
+
+
 router.post('/addnote', fetchuser ,[
   body("title", "Title can note be empty or less then 5 ").isLength({min : 5}),
   body("description", "description must be length of 8").isLength({min : 8}),
@@ -54,6 +56,52 @@ router.post('/addnote', fetchuser ,[
    
 })
 
+
+// update note using put - "login required" - endpoint - api/notes/updatenote/:id 
+
+router.put('/updatenote/:id', fetchuser, async (req, res) =>{
+ 
+     const {title, description, tag} = req.body;
+    
+      const newNote = {};
+      if(title) (newNote.title  = title);
+      if(description) (newNote.description = description);
+      if(tag) (newNote.tag = tag);
+
+      let note = await Note.findById(req.params.id);
+      if(!note){
+        return res.status(400).send("Not found");
+      }
+
+      if(note.user.toString() !== req.user.id){
+         return res.status(401).send("Not Allowed")
+      }
+
+      note = await Note.findByIdAndUpdate(req.params.id, {$set : newNote}, {new : true});
+      res.json(note);
+
+})
+
+
+//  deleting a note using Delete , api/notes/deletenote/:id  - "Login required"
+
+router.delete('/deletenote/:id', fetchuser, async (req, res) =>{
+ 
+   const {title, description, tag} = req.body;
+
+    let note = await Note.findById(req.params.id);
+    if(!note){
+      return res.status(400).send("Not found");
+    }
+
+    if(note.user.toString() !== req.user.id){
+       return res.status(401).send("Not Allowed")
+    }
+
+    note = await Note.findByIdAndDelete(req.params.id);
+    res.json({"Success" : "Note has been deleted"});
+
+})
 
 
 module.exports = router;
