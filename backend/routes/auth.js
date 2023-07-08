@@ -19,7 +19,8 @@ const JWT_SECRET = "goodEnoughString";
    body('email', 'Enter a valid email').isEmail(),
    body('password', 'Enter a valid Password').isLength({min : 8})
  ], async (req, res) =>{
-
+   
+   let success  = false;
    const errors = validationResult(req);
    if(!errors.isEmpty()){
       return res.status(400).json({errors : errors.array()});
@@ -27,7 +28,7 @@ const JWT_SECRET = "goodEnoughString";
     try{
       let user = await User.findOne({email : req.body.email});
       if(user){
-         return res.status(400).json({error : "user with this email already exits"});
+         return res.status(400).json({success, error : "user with this email already exits"});
       }
       
       const salt = await bcrypt.genSalt(10);
@@ -39,16 +40,18 @@ const JWT_SECRET = "goodEnoughString";
          email : req.body.email,
          password : secPass
       })
-  
+       
+      success = true;
+
       const data = {
          user:{
             id : user.id
          }
       }
       const authToken =  jwt.sign(data, JWT_SECRET);
-      console.log(authToken);
+      console.log(success,authToken);
       
-      res.json({authToken});
+      res.json({success,authToken});
 
     }
     catch(error){
@@ -70,9 +73,10 @@ router.post('/login',[
    body('password', 'Password can not be blank').exists(),
 ], async(req, res) =>{
    
+   let success = false;
    const errors = validationResult(req);
    if(!errors.isEmpty()){
-      return res.status(400).json({error: errors.array})
+      return res.status(400).json({error  : errors.array()})
    }
 
   const {email, password} = req.body;
@@ -81,23 +85,24 @@ router.post('/login',[
     
      let user = await User.findOne({email});
      if(!user){
-        return res.status(400).json({error : "Please try to login with correct credential"})
+        return res.status(400).json({success, error : "Please try to login with correct credential"})
      }
 
      const passwordCompare = await bcrypt.compare(password, user.password);
      if(!passwordCompare){
-        return res.status(400).json({error : "Please try to login with correct credential"})
+        return res.status(400).json({success, error : "Please try to login with correct credential"})
      }
-
+       
+       success = true;
        const data = {
          user:{
             id : user.id
          }
       }
       const authToken =  jwt.sign(data, JWT_SECRET);
-      console.log(authToken);
-      
-      res.json({authToken});
+      console.log(success,authToken);
+     
+      res.json({success,authToken});
 
   }  catch(error){
 
