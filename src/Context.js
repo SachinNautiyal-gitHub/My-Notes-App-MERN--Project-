@@ -96,7 +96,7 @@ const AppProvider = ({ children }) => {
   }, []);
 
 
-  return <AppContext.Provider value={{ notesArray, addNote, updateNote, deleteNote, note, setNote }}>
+  return <AppContext.Provider value={{ notesArray, addNote, deleteNote, note, setNote }}>
     {children}
   </AppContext.Provider>
 
