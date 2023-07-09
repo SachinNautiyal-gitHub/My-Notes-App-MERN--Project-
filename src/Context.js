@@ -7,7 +7,9 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
 
   const [notesArray, setNotesArray] = useState([]);
-   
+  const [note, setNote] = useState({ title: " ", description: " ", tag: " " });
+
+
 
 
   const fetchAllnotes = async () => {
@@ -25,15 +27,76 @@ const AppProvider = ({ children }) => {
   }
 
 
+  //  Function for adding a note ......
+
+  const addNote = async (title, description, tag) => {
+
+    console.log("adding a new note")
+    const data = await fetch("http://localhost:5000/api/notes/addnote", {
+
+      method: "POST",
+      headers: {
+        'Content-Type': "application/json",
+        'auth-token': localStorage.getItem('token')
+      },
+      body: JSON.stringify({ title, description, tag })
+
+    })
+
+    const res = data.json();
+    console.log("new node added", res)
+    setNotesArray(notesArray.concat(note));
+  }
+
+
+  //  Function for updating a note ....
+
+  const updateNote = async(title,description, tag, id) => {
+
+    const data = await fetch(`http://localhost:5000/api/notes/updatenote/${id}`, {
+
+      method: "PUT",
+      headers: {
+        'Content-Type': "application/json",
+        'auth-token': localStorage.getItem('token')
+      },
+      body: JSON.stringify({ title, description, tag })
+    })
+    const res = await data.json();
+    console.log(res);
+    
+
+  }
+
+
+  // / Function for deleting a note .....
+
+  const deleteNote = async (id) => {
+
+    const data = await fetch(`http://localhost:5000/api/notes/deletenote/${id}`, {
+
+      method: "DELETE",
+      headers: {
+        'Content-Type': "application/json",
+        'auth-token': localStorage.getItem('token')
+      }
+    })
+    const res = await data.json();
+    console.log(res);
+
+    console.log("deleting a note....");
+    const newNotes = notesArray.filter((note) => { return note._id !== id })
+    setNotesArray(newNotes)
+  }
 
 
   useEffect(() => {
-      fetchAllnotes();
-   
+    fetchAllnotes();
+
   }, []);
 
 
-  return <AppContext.Provider value={{ notesArray }}>
+  return <AppContext.Provider value={{ notesArray, addNote, updateNote, deleteNote, note, setNote }}>
     {children}
   </AppContext.Provider>
 

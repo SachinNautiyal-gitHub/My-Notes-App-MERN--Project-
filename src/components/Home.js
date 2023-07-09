@@ -1,12 +1,20 @@
 
 
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { AppContext } from '../Context'
 
 
 const Home = () => {
 
+  const { deleteNote, notesArray } = useContext(AppContext);
+
   const navigate = useNavigate();
+
+
+  const handleClick = (id) =>{
+     navigate('/editnote' , {id});
+  }
 
   if (!localStorage.getItem('token')) {
     navigate('/login');
@@ -14,18 +22,22 @@ const Home = () => {
   else return (
     <>
       <Link to={'/addnote'}> <button type="button" className="btn btn-info m-5">Add Note</button></Link>
-      <div className="usernotes">
-        <div className="m-4">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse autem tempora aspernatur, inventore magnam provident possimus cum natus aliquid, recusandae soluta eum ut labore delectus velit beatae fugiat explicabo deserunt in magni.
-          </p>
+      <div className="usernotes">{
+        notesArray.map((note)=>(
+          <div className="m-4" key={note._id}>
+            <h1>{note.title}</h1>
+          <p>{note.description}</p>
+           
 
           <div className="buttons-container">
 
-            <Link to={'/editnote'}> <button type="button" className="btn btn-success m-2">Update Note</button></Link>
-            <Link><button type="button" className="btn btn-danger m-2">Delete note</button></Link>
+             <button type="button" className="btn btn-success m-2" onClick={() => { handleClick(note) }}  >Update Note</button>
+            <button type="button" className="btn btn-danger m-2" onClick={() => { deleteNote(note._id) }} >Delete note</button>
           </div>
         </div>
+        ))
+       
+      }
       </div>
 
 
