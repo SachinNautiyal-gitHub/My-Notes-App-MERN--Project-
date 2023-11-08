@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
 
-  const [credential, setCredential] = useState({ email: "", password: " " });
+  const [credential, setCredential] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
   const handleOnSubmit = async (e) => {
@@ -34,7 +34,6 @@ const Login = () => {
   }
 
   const onchange = (e) => {
-
     setCredential({ ...credential, [e.target.name]: e.target.value })
   }
 
@@ -51,7 +50,7 @@ const Login = () => {
           <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
           <input type="password" className="form-control" id="password" value={credential.password} onChange={onchange} name='password'/>
         </div>
-        <p> doesn't have accout ?  || <Link to={'/signup'}>Sign IN</Link></p>
+        <p> doesn't have accout ?  || <Link to={'/signup'}>Sign </Link></p>
         <button type="submit" className="btn btn-primary" >Log In</button>
       </form>
 

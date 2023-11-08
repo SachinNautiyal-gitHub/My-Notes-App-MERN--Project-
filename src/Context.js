@@ -51,22 +51,22 @@ const AppProvider = ({ children }) => {
 
   //  Function for updating a note ....
 
-  // const updateNote = async(title,description, tag, id) => {
+  const updateNote = async(title,description, tag, id) => {
 
-  //   const data = await fetch(`http://localhost:5000/api/notes/updatenote/${id}`, {
+    const data = await fetch(`http://localhost:5000/api/notes/updatenote/${id}`, {
 
-  //     method: "PUT",
-  //     headers: {
-  //       'Content-Type': "application/json",
-  //       'auth-token': localStorage.getItem('token')
-  //     },
-  //     body: JSON.stringify({ title, description, tag })
-  //   })
-  //   const res = await data.json();
-  //   console.log(res);
+      method: "PUT",
+      headers: {
+        'Content-Type': "application/json",
+        'auth-token': localStorage.getItem('token')
+      },
+      body: JSON.stringify({ title, description, tag })
+    })
+    const res = await data.json();
+    console.log(res);
 
 
-  // }
+  }
 
 
   // / Function for deleting a note .....
@@ -96,7 +96,7 @@ const AppProvider = ({ children }) => {
   }, []);
 
 
-  return <AppContext.Provider value={{ notesArray, addNote, deleteNote, note, setNote }}>
+  return <AppContext.Provider value={{ notesArray, addNote, deleteNote, note, setNote, updateNote }}>
     {children}
   </AppContext.Provider>
 

@@ -32,7 +32,7 @@ const Home = () => {
           <div className="buttons-container">
 
              <button type="button" className="btn btn-success m-2" onClick={() => { handleClick(note) }}  >Update Note</button>
-            <button type="button" className="btn btn-danger m-2" onClick={() => { deleteNote(note._id) }} >Delete note</button>
+            <button type="button" className="btn btn-danger m-2" onClick={() => {deleteNote(note._id) }} >Delete note</button>
           </div>
         </div>
         ))
