@@ -27,7 +27,7 @@ const AddNote = () => {
   <input type="text" className="form-control" id="title" name='title' onChange={onchange}  placeholder="Title"/>
 </div>
 <div className="mb-3 w-75">
-  <label htmlFor="exampleFormControlTextarea1" className="form-label">description</label>
+  <label htmlFor="exampleFormControlTextarea1" className="form-label" >description</label>
   <input type="text" className="form-control flex-wrap" id="description" name='description'  onChange={onchange} placeholder="Title"/>
 </div>
 <div className="mb-3 w-75">
