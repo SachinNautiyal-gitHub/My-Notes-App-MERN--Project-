@@ -9,7 +9,7 @@ const Login = () => {
   const handleOnSubmit = async (e) => {
 
     e.preventDefault();
-    const response = await fetch("https://vercel.com/sachin-nautiyals-projects/notes-app-backend/api/auth/login", {
+    const response = await fetch("https://my-notes-app-mern-project.vercel.app/api/auth/login", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
