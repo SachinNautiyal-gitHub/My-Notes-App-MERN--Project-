@@ -13,7 +13,8 @@ const Home = () => {
 
 
   const handleClick = (id) =>{
-     navigate('/editnote' , {id});
+     const noteid = id;
+     navigate(`/editnote/${noteid}`);
   }
 
   if (!localStorage.getItem('token')) {
@@ -23,7 +24,7 @@ const Home = () => {
     <>
       <Link to={'/addnote'}> <button type="button" className="btn btn-info m-5">Add Note</button></Link>
       <div className="usernotes">{
-       notesArray && notesArray.map((note)=>(
+        notesArray && notesArray.map((note)=>(
           <div className="m-4" key={note._id}>
             <h1>{note.title}</h1>
           <p>{note.description}</p>
@@ -31,7 +32,7 @@ const Home = () => {
 
           <div className="buttons-container">
 
-             <button type="button" className="btn btn-success m-2" onClick={() => { handleClick(note) }}  >Update Note</button>
+             <button type="button" className="btn btn-success m-2" onClick={() => { handleClick(note._id) }}  >Update Note</button>
             <button type="button" className="btn btn-danger m-2" onClick={() => {deleteNote(note._id) }} >Delete note</button>
           </div>
         </div>

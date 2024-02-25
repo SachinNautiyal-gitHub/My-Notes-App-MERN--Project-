@@ -10,10 +10,11 @@ const AppProvider = ({ children }) => {
   const [note, setNote] = useState({ title: " ", description: " ", tag: " " });
 
 
+const port = "http://localhost:5000"
 
 
   const fetchAllnotes = async () => {
-    const data = await fetch("https://my-notes-app-mern-project.vercel.app/api/notes/fetchnote", {
+    const data = await fetch(`${port}/api/notes/fetchnote`, {
 
       method: "GET",
       headers: {
@@ -32,7 +33,7 @@ const AppProvider = ({ children }) => {
   const addNote = async (title, description, tag) => {
 
     console.log("adding a new note")
-    const data = await fetch("https://my-notes-app-mern-project.vercel.app/api/notes/addnote", {
+    const data = await fetch(`${port}/api/notes/addnote`, {
 
       method: "POST",
       headers: {
@@ -52,8 +53,7 @@ const AppProvider = ({ children }) => {
   //  Function for updating a note ....
 
   const updateNote = async(title,description, tag, id) => {
-
-    const data = await fetch(`https://my-notes-app-mern-project.vercel.app/api/notes/updatenote/${id}`, {
+    const data = await fetch(`${port}/api/notes/updatenote/${id}`, {
 
       method: "PUT",
       headers: {
@@ -64,7 +64,7 @@ const AppProvider = ({ children }) => {
     })
     const res = await data.json();
     console.log(res);
-
+    
 
   }
 
@@ -73,7 +73,7 @@ const AppProvider = ({ children }) => {
 
   const deleteNote = async (id) => {
 
-    const data = await fetch(`https://my-notes-app-mern-project.vercel.app/api/notes/deletenote/${id}`, {
+    const data = await fetch(`${port}/api/notes/deletenote/${id}`, {
 
       method: "DELETE",
       headers: {

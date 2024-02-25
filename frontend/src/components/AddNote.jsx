@@ -11,7 +11,7 @@ const AddNote = () => {
 
   const handleOnClick = () =>{
      addNote(note.title, note.description, note.tag);
-     navigate('/');
+     navigate('/home');
   }
 
   const onchange =(e) =>{
