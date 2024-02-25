@@ -24,7 +24,7 @@ const Login = () => {
     if (data.success) {
       localStorage.setItem('token', data.authToken);
       alert("logged in succesfully");
-      navigate('/');
+      navigate('/home');
     }
     else {
 

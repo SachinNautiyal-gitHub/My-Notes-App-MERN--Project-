@@ -9,7 +9,7 @@ const Navbar = () => {
   const handleOnClick = () =>{
     console.log("button clicked");
     localStorage.removeItem('token');
-    navigate('/login');
+    navigate('/');
      
   }
   

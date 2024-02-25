@@ -18,11 +18,11 @@ const App = () => {
    
    <Navbar/>
   <Routes>
-    <Route path='/' element= {<Home/>}/>
+    <Route path='/' element= {<Login/>}/>
     <Route path='/about' element= {<About/>}/>
     <Route path='/editnote' element= {<EditNote/>}/>
     <Route path='/addnote' element= {<AddNote/>}/>
-    <Route path='/login' element= {<Login/>}/>
+    <Route path='/home' element= {<Home/>}/>
     <Route path='/signup' element= {<SignUp/>}/>
 
   </Routes>

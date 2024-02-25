@@ -92,7 +92,6 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     fetchAllnotes();
-
   }, []);
 
 

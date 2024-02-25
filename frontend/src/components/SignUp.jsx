@@ -26,7 +26,7 @@ const SignUp = () => {
   if(data.success){
     localStorage.setItem('token', data.authToken);
     alert("Sign-Up in succesfully");
-    navigate('/login');
+    navigate('/');
   }
   else{
       alert(" Invalid Credentials");
