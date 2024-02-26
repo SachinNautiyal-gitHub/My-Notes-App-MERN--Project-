@@ -9,7 +9,13 @@ connectToMongo();
 
 const express = require('express')
 const app = express()
-app.use(cors());
+app.use(cors({
+  origin: true, // or true to allow any origin
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // set to true if your requests involve credentials (cookies, HTTP authentication)
+  optionsSuccessStatus: 204,
+}));
+
 const port = process.env.PORT
 
 app.use(express.json());
