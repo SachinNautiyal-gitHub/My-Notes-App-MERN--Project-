@@ -9,9 +9,7 @@ connectToMongo();
 
 const express = require('express')
 const app = express()
-app.use(cors({
-  origin: 'https://my-notes-app-mern-project.vercel.app',
-}));
+app.use(cors());
 const port = process.env.PORT
 
 app.use(express.json());
