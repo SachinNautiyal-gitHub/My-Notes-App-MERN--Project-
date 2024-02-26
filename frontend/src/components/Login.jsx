@@ -10,6 +10,7 @@ const Login = () => {
 
     e.preventDefault();
     const response = await fetch("https://notes-app-backend-five.vercel.app/api/auth/login", {
+      mode : "no-cors",
       method: "POST",
       headers: {
         'Content-Type': 'application/json'

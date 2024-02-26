@@ -15,7 +15,7 @@ const port = "https://notes-app-backend-five.vercel.app/"
 
   const fetchAllnotes = async () => {
     const data = await fetch(`${port}/api/notes/fetchnote`, {
-
+      mode : "no-cors",
       method: "GET",
       headers: {
         'Content-Type': "application/json",
@@ -34,7 +34,7 @@ const port = "https://notes-app-backend-five.vercel.app/"
 
     console.log("adding a new note")
     const data = await fetch(`${port}/api/notes/addnote`, {
-
+      mode : "no-cors",
       method: "POST",
       headers: {
         'Content-Type': "application/json",
@@ -54,7 +54,7 @@ const port = "https://notes-app-backend-five.vercel.app/"
 
   const updateNote = async(title,description, tag, id) => {
     const data = await fetch(`${port}/api/notes/updatenote/${id}`, {
-
+      mode : "no-cors",
       method: "PUT",
       headers: {
         'Content-Type': "application/json",
@@ -74,7 +74,7 @@ const port = "https://notes-app-backend-five.vercel.app/"
   const deleteNote = async (id) => {
 
     const data = await fetch(`${port}/api/notes/deletenote/${id}`, {
-
+      mode : "no-cors",
       method: "DELETE",
       headers: {
         'Content-Type': "application/json",
