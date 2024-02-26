@@ -30,7 +30,7 @@ const Home = () => {
     <>
       <Link to={'/addnote'}> <button type="button" className="btn btn-info m-5">Add Note</button></Link>
       <div className="usernotes">{
-        notesArray.map((note)=>(
+       notesArray && notesArray.map((note)=>(
           <div className="m-4" key={note._id}>
             <h1>{note.title}</h1>
           <p>{note.description}</p>
