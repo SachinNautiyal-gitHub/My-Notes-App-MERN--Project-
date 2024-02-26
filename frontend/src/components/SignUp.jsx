@@ -58,7 +58,7 @@ const onchange = (e) =>{
  <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
  <input type="password" className="form-control" id="password" name='password' value={credential.pasword} onChange={onchange}/>
 </div>
-<p>arleady have accout ?  | <Link to={'/login'}>Log In</Link></p>
+<p>arleady have accout ?  | <Link to={'/'}>Log In</Link></p>
 <button type="submit" className="btn btn-primary">Sign Up</button>
 </form>
  </div>
