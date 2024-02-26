@@ -10,7 +10,7 @@ const AppProvider = ({ children }) => {
   const [note, setNote] = useState({ title: " ", description: " ", tag: " " });
 
 
-const port = "https://notes-app-backend-five.vercel.app"
+const port = "https://notes-app-backend-h6z2.onrender.com"
 
 
   const fetchAllnotes = async () => {
