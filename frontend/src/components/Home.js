@@ -18,7 +18,7 @@ const Home = () => {
   }
 
   if (!localStorage.getItem('token')) {
-    navigate('/login');
+    navigate('/');
   }
   else return (
     <>
