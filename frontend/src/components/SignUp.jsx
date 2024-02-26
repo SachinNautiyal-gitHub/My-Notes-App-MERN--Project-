@@ -12,7 +12,6 @@ const SignUp = () => {
     
   e.preventDefault();
   const response = await fetch("https://notes-app-backend-five.vercel.app/api/auth/createuser", {
-     mode : "no-cors",
      method : "POST",
      headers : {
        'Content-Type' : 'application/json'
