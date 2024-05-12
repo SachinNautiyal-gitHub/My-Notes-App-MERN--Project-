@@ -5,7 +5,7 @@ import { Link , useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
 
-  const [credential , setCredential] = useState({name:"" , email : "" , password : " "});
+  const [credential , setCredential] = useState({name:"" , email : "" , password : ""});
   const navigate = useNavigate();
 
  const handleOnSubmit = async (e) =>{
