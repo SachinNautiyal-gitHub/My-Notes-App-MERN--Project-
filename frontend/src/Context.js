@@ -10,8 +10,8 @@ const AppProvider = ({ children }) => {
   const [note, setNote] = useState({ title: " ", description: " ", tag: " " });
 
 
-// const port = "https://notes-app-backend-h6z2.onrender.com"
-const port = "http://localhost:5000"
+const port = "https://notes-app-backend-h6z2.onrender.com"
+// const port = "http://localhost:5000"
 
 
   const fetchAllnotes = async () => {
