@@ -10,7 +10,8 @@ const AppProvider = ({ children }) => {
   const [note, setNote] = useState({ title: " ", description: " ", tag: " " });
 
 
-const port = "https://notes-app-backend-h6z2.onrender.com"
+// const port = "https://notes-app-backend-h6z2.onrender.com"
+const port = "http://localhost:5000"
 
 
   const fetchAllnotes = async () => {
@@ -44,9 +45,9 @@ const port = "https://notes-app-backend-h6z2.onrender.com"
 
     })
 
-    const res = data.json();
+    const res = await data.json();
     console.log("new node added", res)
-    setNotesArray(notesArray.concat(note));
+    setNotesArray(notesArray.concat(res));
   }
 
 

@@ -32,7 +32,8 @@ router.post('/addnote', fetchuser ,[
   body("description", "description must be length of 8").isLength({min : 8}),
 
 ], async(req, res) =>{
-  
+   
+   console.log(" I am in the backend");
    try {
       
    const {title , description , tag} = req.body;

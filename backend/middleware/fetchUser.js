@@ -11,7 +11,9 @@ const fetchuser = (req,res, next) =>{
 
    try {
       const data = jwt.verify(token , JWT_SECRET);
-      return req.user = data.user;
+    
+      req.user = data.user;
+      
       next();
    } catch (error) {
     return  res.status(401).send({error : "Accesss denied : Invalid token"})

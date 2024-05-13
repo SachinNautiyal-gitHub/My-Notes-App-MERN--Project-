@@ -25,6 +25,11 @@ const Home = () => {
     navigate('/signup');
   }
 
+  else if (notesArray.length === 0){
+    return (
+    <Link to={'/addnote'}> <button type="button" className="btn btn-info m-5">Add Note</button></Link>
+    )
+  }
 
   else return (
     <>
